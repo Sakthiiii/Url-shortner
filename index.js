@@ -6,12 +6,13 @@
  app.use(express.json({extended:false}));
 
 //routes
-app.get("/home",function(req,res){
+app.get("/",function(req,res){
     res.render("index.ejs");
 });
-app.use('/',require('./routes/index'));
+var indexRoute= require("./routes/index");
+//app.use('/',require('./routes/index'));
 app.use('/api/url',require('./routes/url'));
-
+app.use(indexRoute);
 const port=process.env.PORT || 3000;
 app.listen(port,()=> console.log(`server running on port $(port)`));
  
