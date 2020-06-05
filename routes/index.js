@@ -2,10 +2,10 @@ const express = require('express');
 const router= express.Router();
 
 const Url = require("../model/url");
-router.get('', async (req,res)=> {
+router.get('/:code', async (req,res)=> {
     try {
+        console.log(req.params.code);
         const url = await Url.findOne({ urlCode: req.params.code });
-    
         if (url) {
           return res.redirect(url.longUrl);
         } else {

@@ -6,10 +6,10 @@
  app.use(express.json({extended:false}));
 
 //routes
-app.get("/",function(req,res){
+app.get("/home",function(req,res){
     res.render("index.ejs");
 });
-app.use('/:code',require('./routes/index'));
+app.use('/',require('./routes/index'));
 app.use('/api/url',require('./routes/url'));
 
 const port=process.env.PORT || 3000;
