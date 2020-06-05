@@ -2,7 +2,7 @@ const express = require('express');
 const router= express.Router();
 
 const Url = require("../model/url");
-router.get('/:code', async (req,res)=> {
+router.get('', async (req,res)=> {
 try{
     const url = await Url.findOne({urlCode: req.params.code});
     if(url)
