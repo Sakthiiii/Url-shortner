@@ -4,33 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Fetch API Sandbox</title>
+  <title>Url Shortener</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  
+   <style>
+   .design{
+   padding: 25px;
+   margin-bottom: 25px;
+   font-size: 25px;
+   font-weight: 250;
+   line-height: 2.1428571435;
+   color: inherit;
+   background-color: transparent;
+}
+   </style>  
 </head>
 <body>
   <div class="container">
-    <h1 class="display-4 mb-4">Get Your Short Url</h1>
+    <div style="background-color:#CFD8DC; color: black;" class="jumbotron design">
+      <h1 style="font-weight: 350;"class="display-4 mb-7">Url Shortener</h1>
+      <p> A modern Url Shortener </p>
+    </div>
     <hr>
-    <form id="addPost" >
-        <textarea id="body" placeholder="Body"></textarea>
-      <input type="submit" class="btn btn-secondary" value="Submit">
+    <form id="addPost"  class="my-4 form-inline">
+        <label for="full Url" class="sr-only">Url</label>
+        <input required name="fullUrl" id="body" placeholder="Enter Long Url" type="url" class="form-control col mr-2"></input>
+      <input type="submit" class="btn btn-success" value="Submit">
     </form>
-  <div>
-      <p>Your short url is here:</p>
+    <table class="table table-striped table-responsive">
+      <thead>
+        <tr>
+          <th>Full Url </th>
+          <th>Url Code</th>
+          <th>Short Url </th>
+          <th>Clicks </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th id='1'></th>
+          <th id="4"></th>
+          <th id="2"></th>
+          <th id="3"></th>
+        </tr>
+      </tbody>
+    </table>
   <div id="output"></div>
-  </div>
 </div>
 </div>
   <script>
    document.getElementById('addPost').addEventListener('submit', addPost);
    let abc=document.getElementById('output');
+   let aa=document.getElementById('1');
+   let ab=document.getElementById('2');
+   let ac=document.getElementById('3');
+   let ad=document.getElementById('4');
    function addPost(e){
       e.preventDefault();
 
      // let title = document.getElementById('title').value;
       let longUrl = document.getElementById('body').value;
-      console.log(longUrl);
+      //console.log(longUrl);
       //console.log(JSON.stringify({longUrl}));
       fetch('./api/url/shorten', {
         method:'POST',
@@ -43,9 +76,14 @@
       .then((res) => res.json())
       .then((data) => {
           console.log(data);
-          abc.innerHTML=data.shortUrl;
+          aa.innerHTML="<a href="+data.longUrl+">"+data.longUrl+"</a>";
+          ab.innerHTML="<a href="+data.shortUrl+">"+data.shortUrl+"</a>";
+          ac.innerHTML=data.clicks;
+          ad.innerHTML=data.urlCode;
       })
     }
+ 
+    
   </script>
 </body>
 </html>
