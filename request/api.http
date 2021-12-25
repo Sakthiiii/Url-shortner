@@ -1,5 +1,4 @@
- POST https://mysterious-tor-07817.herokuapp.com/api/url/shorten
- Content-Type: application/json
+
  
  {
      "longUrl": "https://www.amazon.in/Barata-Formal-Purple-Dobby-Checks/dp/B07HYTWBZ4/ref=bbp_bb_d33a38_st_nGy5_w_1?psc=1&smid=AO7GHPAH01YRM"
