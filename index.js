@@ -14,5 +14,5 @@ var indexRoute= require("./routes/index");
 app.use('/api/url',require('./routes/url'));
 app.use(indexRoute);
 const port=process.env.PORT || 3000;
-app.listen(port,()=> console.log(`server running on port $(port)`));
+app.listen(port,()=> console.log(`server running on port... $(port)`));
  
